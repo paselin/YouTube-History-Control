@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>YouTube History Control</title>
+    <link rel="stylesheet" href="tailwind.min.css">
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="wrapper">
+        <h1>履歴コントロール</h1>
+        <p class="subtitle">YouTubeの再生履歴の保存</p>
+
+        <div class="control-box">
+            <div class="control-row">
+                <span id="toggle-label">無効にする</span>
+                <label for="toggle" class="inline-flex relative items-center cursor-pointer">
+                    <input type="checkbox" value="" id="toggle" class="sr-only peer">
+                    <div class="w-11 h-6 bg-slate-700 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-600"></div>
+                </label>
+            </div>
+        </div>
+
+        <!-- 手動記録セクション -->
+        <div id="manual-record-section" class="hidden w-full">
+            <p class="manual-record-description">ブロックが有効な場合、現在の動画を手動で履歴に記録できます。</p>
+            <button id="record-button">
+                この動画を履歴に記録
+            </button>
+        </div>
+        
+        <p id="status">現在、履歴は保存されています。</p>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>

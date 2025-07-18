@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube History Control",
+  "version": "2.0",
+  "description": "Enables or disables saving to YouTube's watch history using Declarative Net Request.",
+  "permissions": [
+    "storage",
+    "declarativeNetRequest"
+  ],
+  "host_permissions": [
+    "*://*.youtube.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
