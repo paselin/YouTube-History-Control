@@ -62,3 +62,9 @@ Chromeウェブストア未公開のため、手動インストールが必要�
 - Chrome Extension Manifest V3
 - Chrome declarativeNetRequest API
 - Tailwind CSS
+
+---
+
+## 📄 ライセンス
+
+このプロジェクトはMITライセンスのもとで公開されています。詳細は`LICENSE`ファイルをご参照ください。
