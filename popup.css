@@ -116,36 +116,39 @@ h1 {
 }
 
 /* トグルスイッチのスタイル */
-.toggle-switch {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
+.control-row .toggle-switch {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
 }
-.toggle-switch .slider {
-  position: relative;
-  width: 44px;
-  height: 24px;
-  background: #334155;
-  border-radius: 9999px;
-  transition: background 0.2s;
-  margin-right: 8px;
+.control-row .toggle-switch input[type="checkbox"] {
+    display: none;
 }
-.toggle-switch .slider.active {
-  background: #2563eb;
+.control-row .toggle-switch .slider {
+    position: relative;
+    width: 44px;
+    height: 24px;
+    background: #334155;
+    border-radius: 9999px;
+    transition: background 0.2s;
+    margin-right: 8px;
 }
-.toggle-switch .slider::before {
-  content: "";
-  position: absolute;
-  left: 2px;
-  top: 2px;
-  width: 20px;
-  height: 20px;
-  background: #fff;
-  border-radius: 50%;
-  transition: transform 0.2s;
+.control-row .toggle-switch input[type="checkbox"]:checked + .slider {
+    background: #2563eb;
 }
-.toggle-switch .slider.active::before {
-  transform: translateX(20px);
+.control-row .toggle-switch .slider::before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 50%;
+    transition: transform 0.2s;
+}
+.control-row .toggle-switch input[type="checkbox"]:checked + .slider::before {
+    transform: translateX(20px);
 }
 
 /* ユーティリティクラス */

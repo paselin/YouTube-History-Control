@@ -4,6 +4,9 @@ const toggleLabel = document.getElementById('toggle-label');
 const recordSection = document.getElementById('manual-record-section');
 const recordButton = document.getElementById('record-button');
 const slider = document.querySelector('.slider');
+const dialogToggle = document.getElementById('dialog-toggle');
+const dialogToggleLabel = document.getElementById('dialog-toggle-label');
+const dialogSlider = dialogToggle ? dialogToggle.nextElementSibling : null;
 
 // 保存された状態に基づいてUIを更新する関数
 function updateUI(isBlockingEnabled) {
@@ -37,6 +40,31 @@ document.addEventListener('DOMContentLoaded', () => {
             chrome.runtime.sendMessage({ action: "updateBlockingStatus", isBlockingEnabled: isBlockingEnabled });
         });
     });
+
+    // ダイアログ機能の状態をUIに反映
+    chrome.storage.sync.get(['dialogFeatureEnabled'], (result) => {
+        const enabled = !!result.dialogFeatureEnabled;
+        if (dialogToggle) dialogToggle.checked = enabled;
+        if (dialogSlider) {
+            if (enabled) dialogSlider.classList.add('active');
+            else dialogSlider.classList.remove('active');
+        }
+        if (dialogToggleLabel) dialogToggleLabel.textContent = enabled ? '履歴ダイアログを表示する' : '履歴ダイアログを表示しない';
+    });
+
+    // ダイアログトグルの変更を監視
+    if (dialogToggle) {
+        dialogToggle.addEventListener('change', () => {
+            const enabled = dialogToggle.checked;
+            if (dialogSlider) {
+                if (enabled) dialogSlider.classList.add('active');
+                else dialogSlider.classList.remove('active');
+            }
+            chrome.storage.sync.set({ dialogFeatureEnabled: enabled }, () => {
+                if (dialogToggleLabel) dialogToggleLabel.textContent = enabled ? '履歴ダイアログを表示する' : '履歴ダイアログを表示しない';
+            });
+        });
+    }
 });
 
 // 記録ボタンのクリックを監視

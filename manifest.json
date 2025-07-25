@@ -15,5 +15,12 @@
   },
   "action": {
     "default_popup": "popup.html"
-  }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/watch?v=*"] ,
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
 }
